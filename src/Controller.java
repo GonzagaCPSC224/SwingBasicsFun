@@ -37,6 +37,14 @@ public class Controller /*implements ActionListener*/ {
                 // task: authenticate with the model
                 // update the status label (setText())
 
+                boolean valid = model.authenticate(username, password);
+                if (valid) {
+                    view.statusLabel.setText("Welcome, admin");
+                }
+                else {
+                    view.statusLabel.setText("Go away!!");
+                }
+
             }
         });
 
