@@ -1,10 +1,9 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // 1.
-public class Controller implements ActionListener {
+public class Controller /*implements ActionListener*/ {
     private Model model;
     private View view;
 
@@ -21,15 +20,32 @@ public class Controller implements ActionListener {
         // 2 ways to implement ActionListener
         // 1. Controller implement ActionListener
         // register this instance of Controller as the callback object
-        view.loginButton.addActionListener(this);
+        //view.loginButton.addActionListener(this);
         // 2. Define a new class (outer or nested) that implements ActionListener
         // create an object of the class and register
+        // anonymous class!!
+        view.loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton button = (JButton) e.getSource();
+                System.out.println(button.getText());
+
+                String username = Controller.this.view.usernameTextField.getText();
+                String password = new String(view.passwordField.getPassword());
+
+                System.out.println(username + " " + password);
+                // task: authenticate with the model
+                // update the status label (setText())
+
+            }
+        });
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
-    }
+    // 1.
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        System.out.println(e.getActionCommand());
+//    }
 
 }
