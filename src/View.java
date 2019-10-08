@@ -3,6 +3,10 @@ import java.awt.*;
 
 public class View extends JFrame {
     private Controller controller;
+    protected JTextField usernameTextField;
+    protected JPasswordField passwordField;
+    protected JButton loginButton;
+    protected JLabel statusLabel;
 
     public View(Controller controller) {
         super("My Login App");
@@ -22,16 +26,16 @@ public class View extends JFrame {
         JLabel loginLabel = new JLabel("Login to Continue");
         contentPanel.add(loginLabel);
 
-        JTextField usernameTextField = new JTextField();
+        usernameTextField = new JTextField();
         contentPanel.add(usernameTextField);
 
-        JPasswordField passwordField = new JPasswordField();
+        passwordField = new JPasswordField();
         contentPanel.add(passwordField);
 
-        JButton loginButton = new JButton("Login");
+        loginButton = new JButton("Login");
         contentPanel.add(loginButton);
 
-        JLabel statusLabel = new JLabel(" ");
+        statusLabel = new JLabel(" ");
         contentPanel.add(statusLabel);
 
         getContentPane().add(contentPanel);
